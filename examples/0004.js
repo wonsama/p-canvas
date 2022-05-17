@@ -235,7 +235,9 @@ async function init() {
 
         let exportName = `IMG1_${count}`;
         sprites.push(`// sprite image (${count + 1}/${total}) `);
-        sprites.push(`const ${exportName} = [${res.join(", ")}];`);
+        sprites.push(
+          `const long ${exportName}[] PROGMEM = {${res.join(", ")}};`
+        );
         sprites.push(``);
         exportNames.push(exportName);
         count++;
