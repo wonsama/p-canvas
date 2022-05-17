@@ -25,7 +25,7 @@ const fs = require("fs");
 //
 //  const
 //
-const { OUTPUT } = require("../src/util/path");
+const { OUTPUT } = require("../../src/util/path");
 const COLOR_MAP = require(`${OUTPUT}/${process.env.OUTPUT_COLORMAP_0002}`);
 
 const INFO = {
