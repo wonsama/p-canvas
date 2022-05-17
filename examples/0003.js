@@ -17,6 +17,7 @@
 //
 //  require
 //
+require("dotenv").config();
 const { createCanvas, loadImage } = require("canvas");
 const fs = require("fs");
 
@@ -30,8 +31,8 @@ const INFO = {
   FILE_DESC: "16x16 이미지를 읽어들여 칼라맵 형태로 전환한다 (링크 참조)",
   FILE_DATE: "2022.05.17",
 };
-const IMG_PATH_16x16 = `${APP_ROOT}/assets/ignore/16x16.png`;
-const FILE_OUTPUT_PATH = `${OUTPUT}/16x16-colormap.js`;
+const ASSETS_IGNORE_IMG = `${APP_ROOT}/assets/ignore/${process.env.ASSETS_IGNORE_PNG_0003}`;
+const FILE_OUTPUT_PATH = `${OUTPUT}/${process.env.ASSETS_IGNORE_PNG_0003}.colormap.js`;
 ///////////////////////////////////////////////////////////////
 //
 //  variable
@@ -81,7 +82,7 @@ async function init() {
   const canvas = createCanvas(BOX_SIZE, BOX_SIZE);
   const context = canvas.getContext("2d");
 
-  loadImage(IMG_PATH_16x16).then(image => {
+  loadImage(ASSETS_IGNORE_IMG).then(image => {
     context.drawImage(image, 0, 0, BOX_SIZE, BOX_SIZE);
     var myImageData = context.getImageData(0, 0, BOX_SIZE, BOX_SIZE); // left, top, width, height
 
