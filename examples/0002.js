@@ -17,6 +17,7 @@
 //
 //  require
 //
+require("dotenv").config();
 const { createCanvas, loadImage } = require("canvas");
 const fs = require("fs");
 
@@ -25,7 +26,7 @@ const fs = require("fs");
 //  const
 //
 const { OUTPUT } = require("../src/util/path");
-const COLOR_MAP = require(`${OUTPUT}/16x16-colormap`);
+const COLOR_MAP = require(`${OUTPUT}/${process.env.OUTPUT_COLORMAP_0002}`);
 
 const INFO = {
   FILE_FILE: "0002.js",
@@ -83,7 +84,7 @@ async function init() {
 
   // write buffer image file
   const buffer = canvas.toBuffer("image/png");
-  fs.writeFileSync(`${OUTPUT}/16x16-colormap-image.png`, buffer);
+  fs.writeFileSync(`${OUTPUT}/${process.env.OUTPUT_COLORMAP_0002}.png`, buffer);
 }
 init().catch(err => {
   console.log(err);

@@ -24,7 +24,7 @@ const fs = require("fs");
 //
 //  const
 //
-const { APP_ROOT, OUTPUT } = require("../src/util/path");
+const { APP_ROOT, OUTPUT } = require("../../src/util/path");
 const {
   BOMB_JACK_01,
   BOMB_JACK_02,
