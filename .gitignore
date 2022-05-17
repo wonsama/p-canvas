@@ -111,3 +111,5 @@ output/*
 !output/temp
 
 test*
+assets/ignore/*
+!assets/ignore/temp
