@@ -1,0 +1,23 @@
+{
+  "name": "p-canvas",
+  "version": "1.0.0",
+  "description": "node-canvas 예제 모음집",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonsama/p-canvas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wonsama/p-canvas/issues"
+  },
+  "homepage": "https://github.com/wonsama/p-canvas#readme",
+  "dependencies": {
+    "canvas": "^2.9.1"
+  }
+}
