@@ -226,18 +226,38 @@ async function init() {
         );
         let myImageData = context.getImageData(0, 0, BOX_SIZE, BOX_SIZE); // left, top, width, height
         let res = [];
+
         for (let k = 0; k < myImageData.data.length / 4; k++) {
           let cut = myImageData.data.slice(0 + k * 4, 4 + k * 4);
-          // console.log(k, 0 + k * 4, 4 + k * 4, toHexString(cut));
           res.push(toHexString(cut));
         }
+
         colormaps.push(myImageData.data);
+
+        console.log(res.length);
 
         let exportName = `IMG1_${count}`;
         sprites.push(`// sprite image (${count + 1}/${total}) `);
-        sprites.push(
-          `const long ${exportName}[] PROGMEM = {${res.join(", ")}};`
-        );
+        // sprites.push(
+        //   `const long ${exportName}[] PROGMEM = {${res.join(", ")}};`
+        // );
+        sprites.push(`const long ${exportName}[] PROGMEM = {`); // start
+
+        // 16 개 단위로 reverse - normal
+        let isReversed = true;
+        let temp = [];
+        for (let i = 0; i < parseInt(res.length / BOX_SIZE); i++) {
+          let current = res.slice(i * BOX_SIZE, i * BOX_SIZE + BOX_SIZE);
+          if (isReversed) {
+            current.reverse();
+          }
+          temp.push(...current);
+          isReversed = !isReversed;
+        }
+        sprites.push(temp.join(", "));
+
+        sprites.push(`};`); // end
+
         sprites.push(``);
         exportNames.push(exportName);
         count++;
