@@ -1,9 +1,9 @@
 //////////////////////////////////////////////////////////////
 //
 //  file :
-//      0001.js
+//      0002.js
 //  desc :
-//      픽셀드로잉-봄버맨
+//      픽셀드로잉-16x16
 //  date :
 //      2022.05.17
 //
@@ -24,17 +24,15 @@ const fs = require("fs");
 //
 //  const
 //
-const { APP_ROOT, OUTPUT } = require("../src/util/path");
-const {
-  BOMB_JACK_01,
-  BOMB_JACK_02,
-} = require(`${APP_ROOT}/src/colormap/bomb.jack`);
+const { OUTPUT } = require("../src/util/path");
+const COLOR_MAP = require(`${OUTPUT}/16x16-colormap`);
 
 const INFO = {
-  FILE_FILE: "0001.js",
-  FILE_DESC: "픽셀드로잉-봄버맨",
+  FILE_FILE: "0002.js",
+  FILE_DESC: "픽셀드로잉-16x16",
   FILE_DATE: "2022.05.17",
 };
+const BOX_SIZE = 100;
 
 ///////////////////////////////////////////////////////////////
 //
@@ -65,7 +63,7 @@ const INFO = {
 //
 //  init
 //
-const BOX_SIZE = 100;
+
 async function init() {
   // print info
   console.log(INFO.FILE_FILE, INFO.FILE_DESC, INFO.FILE_DATE);
@@ -77,7 +75,7 @@ async function init() {
   // draw rect
   for (let i = 0; i < 16; i++) {
     for (let j = 0; j < 16; j++) {
-      let color = BOMB_JACK_02[i * 16 + j];
+      let color = COLOR_MAP[i * 16 + j];
       context.fillStyle = `#${color.toString(16).padStart(6, "0")}`; // "#764abc";
       context.fillRect(BOX_SIZE * j, BOX_SIZE * i, BOX_SIZE, BOX_SIZE); // x, y, width, height
     }
@@ -85,7 +83,7 @@ async function init() {
 
   // write buffer image file
   const buffer = canvas.toBuffer("image/png");
-  fs.writeFileSync(`${OUTPUT}/image.png`, buffer);
+  fs.writeFileSync(`${OUTPUT}/16x16-colormap-image.png`, buffer);
 }
 init().catch(err => {
   console.log(err);
